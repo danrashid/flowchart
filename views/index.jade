@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  if charts.length > 0
+    ul
+      each chart in charts
+        li
+          a(href="/charts/#{chart.id}")= chart.name
+  else
+    p= 'There are no charts yet. '
+      a(href="/charts/create") Create one
