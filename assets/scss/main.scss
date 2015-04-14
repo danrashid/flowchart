@@ -1,17 +1,24 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+  font: 1em/1.375em "Helvetica Neue", sans-serif;
 }
 
 input, textarea, button {
   font: inherit;
 }
 
+h1 {
+  font-weight: normal;
+}
+
 input, textarea {
-  display: block;
+  font-family: Menlo, Consolas, monospace;
   width: 100%;
+}
+
+rect {
+  stroke: Black;
+}
+
+text {
+  fill: Black;
 }

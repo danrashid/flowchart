@@ -18,4 +18,7 @@ block content
         br
         textarea(name="markup" rows="10" required)= chart.markup
     p
-      button(type="submit") Save chart
+      button(type="submit") Save &amp; render
+  #preview
+  p
+    a(href="/charts/#{chart._id}/svg") Get SVG
