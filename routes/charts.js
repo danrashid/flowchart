@@ -32,7 +32,7 @@ router.get('/:id', function(req, res, next) {
     }
 
     res.render('edit', {
-      title: 'Edit ' + chart.name,
+      title: chart.name,
       chart: chart
     });
   });
