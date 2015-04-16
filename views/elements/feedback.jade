@@ -1,3 +1,5 @@
 g(transform="translate(#{x},#{y})")
   polygon(points="25,150 75,50 275,50 225,150" stroke="#000000" fill="#FFFFFF")
-  text(x="80" y="75" font-family="Helvetica Neue")= text
+  text(font-family="Helvetica Neue")
+    each line, i in text
+      tspan(x="80" y=75 + (i * 20))= line

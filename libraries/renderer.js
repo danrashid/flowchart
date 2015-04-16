@@ -32,6 +32,21 @@ function renderConnectors(elements) {
   return svg;
 }
 
+function wrap(text) {
+  var lines = [],
+    spacePosition;
+
+  while (text.length > 20) {
+    spacePosition = text.substr(0, 20).lastIndexOf(' ');
+    lines.push(text.substring(0, spacePosition));
+    text = text.substring(spacePosition + 1);
+  }
+
+  lines.push(text);
+
+  return lines;
+}
+
 function renderShapes(elements) {
   var svg = '',
     types = [
@@ -44,12 +59,13 @@ function renderShapes(elements) {
     if (yOffset % 2 === 0) {
       row.forEach(function (element, xOffset) {
         if (types.indexOf(element.type) > -1) {
-          var template = getTemplate(element);
+          var template = getTemplate(element),
+            text = element.match.substr(1, element.match.length - 2);
 
           svg += jade.renderFile(template, {
             x: (xOffset / 2) * 300,
             y: (yOffset / 2) * 200,
-            text: element.match.substr(1, element.match.length - 2)
+            text: wrap(text)
           });
         }
       });
