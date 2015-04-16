@@ -19,6 +19,14 @@ block content
         textarea(name="markup" rows="10" required)= chart.markup
     p
       button(type="submit") Save &amp; render
+  
   #preview
-  p
-    a(href="/charts/#{chart._id}/svg") Get SVG
+  
+  p#download
+    a(href="/charts/#{chart._id}/svg") Download SVG
+
+  script(type="text/javascript").
+    $.get('/charts/#{chart._id}/svg', function (res) {
+      $('#preview').html(res);
+      $('#download').show();
+    });

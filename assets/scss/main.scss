@@ -12,13 +12,9 @@ h1 {
 
 input, textarea {
   font-family: Menlo, Consolas, monospace;
-  width: 100%;
+  width: 60em;
 }
 
-rect {
-  stroke: Black;
-}
-
-text {
-  fill: Black;
+#download {
+  display: none;
 }

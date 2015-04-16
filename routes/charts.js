@@ -46,11 +46,13 @@ router.get('/:id/svg', function(req, res, next) {
       return res.status(404).send('Sorry, we cannot find that!');
     }
 
-    var elements = parse(chart.markup);
+    var elements = parse(chart.markup),
+      svg = render(elements),
+      template = req.xhr ? 'svg' : 'xml';
 
     res
       .type('image/svg+xml')
-      .render('xml', render(elements));
+      .render(template, svg);
   });
 });
 
