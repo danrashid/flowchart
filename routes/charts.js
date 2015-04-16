@@ -1,7 +1,8 @@
 var express = require('express'),
   router = express.Router(),
   model = require('../models/charts'),
-  jade = require('jade');
+  parse = require('../libraries/parser').parse,
+  render = require('../libraries/renderer').render;
 
 router.get('/', function(req, res, next) {
   var charts = [];
@@ -45,11 +46,11 @@ router.get('/:id/svg', function(req, res, next) {
       return res.status(404).send('Sorry, we cannot find that!');
     }
 
+    var elements = parse(chart.markup);
+
     res
       .type('image/svg+xml')
-      .render('xml', {
-        svg: '<rect x="50" y="50" width="200" height="100" fill="blue" />'
-      });
+      .render('xml', render(elements));
   });
 });
 
