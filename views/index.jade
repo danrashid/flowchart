@@ -8,6 +8,5 @@ block content
       each chart in charts
         li
           a(href="/charts/#{chart._id}")= chart.name
-  else
-    p= 'There are no charts yet. '
-      a(href="/charts/create") Create one
+  p
+    a(href="/charts/create") Create one

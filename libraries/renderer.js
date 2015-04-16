@@ -22,8 +22,8 @@ function renderConnectors(elements) {
         var template = getTemplate(element);
 
         svg += jade.renderFile(template, {
-          x: xOffset * 400,
-          y: yOffset * 300
+          x: Math.floor(xOffset / 2) * 300,
+          y: Math.floor(yOffset / 2) * 200
         });
       }
     });
@@ -47,8 +47,8 @@ function renderShapes(elements) {
           var template = getTemplate(element);
 
           svg += jade.renderFile(template, {
-            x: xOffset * 400,
-            y: yOffset * 300,
+            x: (xOffset / 2) * 300,
+            y: (yOffset / 2) * 200,
             text: element.match.substr(1, element.match.length - 2)
           });
         }
@@ -60,8 +60,13 @@ function renderShapes(elements) {
 }
 
 exports.render = function (elements) {
+  var rowLengths = elements.map(function (row) { return row.length; }),
+    maxRowLength = Math.max.apply(null, rowLengths);
+
   return {
     connectors: renderConnectors(elements),
-    shapes: renderShapes(elements)
+    shapes: renderShapes(elements),
+    width: Math.ceil(maxRowLength / 2) * 300,
+    height: Math.ceil(elements.length / 2) * 200
   };
 };
